@@ -349,3 +349,5 @@ japanese_cars = {
 american_cars[:ford] #=> "Mustang"
 japanese_cars[:honda] #=> "Accord"
 ```
+
+## Methods

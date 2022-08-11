@@ -34,7 +34,7 @@
 
 "!".prepend("hello, ", "world") #=> "hello, world!"
 ```
-## Substring:
+### Substring:
 ```ruby
 "hello"[0] #=> "h"
 
@@ -194,14 +194,14 @@ end
 num_array = [1, 2, 3, 4, 5]
 str_array = ["This", "is", "a", "small", "array"]
 ```
-## Methods
+### Methods
 ```ruby
 Array.new #=> []
 Array.new(3) #=> [nil, nil, nil]
 Array.new(3, 7) #=> [7, 7, 7]
 Array.new(3, true) #=> [true, true, true]
 ```
-## Accessing Elements
+### Accessing Elements
 ```ruby
 str_array = ["This", "is", "a", "small", "array"]
 
@@ -217,7 +217,7 @@ str_array.first #=> "This"
 str_array.first(2) #=> ["This", "is"]
 str_array.last(2) #=> ["small", "array"]
 ```
-## Adding and Removing Elements
+### Adding and Removing Elements
 ```ruby
 num_array = [1, 2]
 
@@ -238,7 +238,7 @@ num_array.pop(3) #=> [4, 5, 6]
 num_array.shift(2) #=> [1, 2]
 num_array #=> [3]
 ```
-## Adding and Subtracing Arrays
+### Adding and Subtracing Arrays
 ```ruby
 a = [1, 2, 3]
 b = [3, 4, 5]
@@ -248,7 +248,7 @@ a.concat(b) #=> [1, 2, 3, 3, 4, 5]
 
 [1, 1, 1, 2, 2, 3, 4] - [1, 4]  #=> [2, 2, 3]
 ```
-## Basic Methods
+### Basic Methods
 ```ruby
 [].empty? #=> true
 [[]].empty? #=> false
@@ -265,3 +265,87 @@ a.concat(b) #=> [1, 2, 3, 3, 4, 5]
 [1, 2, 3].join("-") #=> "1-2-3"
 ```
 ## Hashes
+
+### Creating Hashes
+```ruby
+my_hash = {
+  "a random word" => "ahoy",
+  "Dorothy's math test score" => 94,
+  "an array" => [1, 2, 3],
+  "an empty hash within a hash" => {}
+}
+
+my_hash = Hash.new
+my_hash #=> {}
+
+hash = { 9 => "nine", :six => 6 }
+```
+
+### Accessing Values
+```ruby
+shoes = {
+  "summer" => "sandals",
+  "winter" => "boots"
+}
+
+shoes["summer"] #=> "sandals"
+
+shoes["hiking"] #=> nil
+
+shoes.fetch("hiking") #=> KeyError: key not found: "hiking"
+
+shoes.fetch("hiking", "hiking boots") #=> "hiking boots"
+```
+
+### Adding and Changing Data
+```ruby
+shoes["fall"] = "sneakers"
+
+shoes #=> {"summer"=>"sandals", "winter"=>"boots", "fall"=>"sneakers"}
+
+shoes["summer"] = "flip-flops"
+shoes #=> {"summer"=>"flip-flops", "winter"=>"boots", "fall"=>"sneakers"}
+```
+
+### Removing Data
+```ruby
+shoes.delete("summer") #=> "flip-flops"
+shoes #=> {"winter"=>"boots", "fall"=>"sneakers"}
+```
+
+### Methods
+```ruby
+books = {
+  "Infinite Jest" => "David Foster Wallace",
+  "Into the Wild" => "Jon Krakauer"
+}
+
+books.keys #=> ["Infinite Jest", "Into the Wild"]
+books.values #=> ["David Foster Wallace", "Jon Krakauer"]
+```
+
+### Merging Two Hashes
+```ruby
+hash1 = { "a" => 100, "b" => 200 }
+hash2 = { "b" => 254, "c" => 300 }
+hash1.merge(hash2) #=> { "a" => 100, "b" => 254, "c" => 300 }
+```
+
+### Symbols as Hash Keys
+```ruby
+# 'Rocket' syntax
+american_cars = {
+  :chevrolet => "Corvette",
+  :ford => "Mustang",
+  :dodge => "Ram"
+}
+# 'Symbols' syntax
+japanese_cars = {
+  honda: "Accord",
+  toyota: "Corolla",
+  nissan: "Altima"
+}
+
+american_cars[:ford] #=> "Mustang"
+japanese_cars[:honda] #=> "Accord"
+```

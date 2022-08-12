@@ -1,0 +1,4 @@
+# Input Commands:
+```ruby
+gets
+```

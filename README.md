@@ -468,3 +468,151 @@ isogram?("Odin")
 1. The program encounters an error and won’t run. For example, a typo may cause a syntax error to be raised that causes the program to crash. In this case, Ruby provides a stack trace.
 
 2. The program runs but does not work the way you expect. For example, you expect a method to return a 2, but it actually returns 6 when you run it. In this case, there is no stack trace.
+
+## Basic Enumerable Methods
+
+### Life Before Enumerables
+
+```ruby
+friends = ['Sharon', 'Leo', 'Leila', 'Brian', 'Arun']
+invited_list = []
+
+for friend in friends do
+  if friend != 'Brian'
+  invited_list.push(friend)
+  end
+end
+
+invited_list #=> ["Sharon", "Leo", "Leila", "Arun"]
+```
+
+### The each Method
+```ruby
+friends = ['Sharon', 'Leo', 'Leila', 'Brian', 'Arun']
+
+friends.each { |friend| puts "Hello, " + friend }
+
+#=> Hello, Sharon
+#=> Hello, Leo
+#=> Hello, Leila
+#=> Hello, Brian
+#=> Hello, Arun
+
+#=> ["Sharon", "Leo", "Leila", "Brian" "Arun"]
+```
+
+### The each_with_index Method
+```ruby
+fruits = ["apple", "banana", "strawberry", "pineapple"]
+
+fruits.each_with_index { |fruit, index| puts fruit if index.even? }
+
+#=> apple
+#=> strawberry
+#=> ["apple", "banana", "strawberry", "pineapple"]
+```
+
+### The map Method
+```ruby
+friends = ['Sharon', 'Leo', 'Leila', 'Brian', 'Arun']
+
+friends.each { |friend| friend.upcase }
+
+#=> ['Sharon', 'Leo', 'Leila', 'Brian', 'Arun']
+```
+
+### The select Method
+```ruby
+friends = ['Sharon', 'Leo', 'Leila', 'Brian', 'Arun']
+invited_list = []
+
+friends.each do |friend|
+  if friend != 'Brian'
+    invited_list.push(friend)
+  end
+end
+
+invited_list
+ #=> ["Sharon", "Leo", "Leila", "Arun"]
+```
+
+### The reduce Method
+```ruby
+my_numbers = [5, 6, 7, 8]
+sum = 0
+
+my_numbers.each { |number| sum += number }
+
+sum
+#=> 26
+```
+
+### Bang Methods
+```ruby
+friends = ['Sharon', 'Leo', 'Leila', 'Brian', 'Arun']
+
+friends.map { |friend| friend.upcase }
+#=> `['SHARON', 'LEO', 'LEILA', 'BRIAN', 'ARUN']`
+
+friends
+#=> ['Sharon', 'Leo', 'Leila', 'Brian', 'Arun']
+```
+
+### Return Values of Enumerables
+```ruby
+friends = ['Sharon', 'Leo', 'Leila', 'Brian', 'Arun']
+
+invited_friends = friends.select { |friend| friend != 'Brian' }
+
+friends
+#=> ['Sharon', 'Leo', 'Leila', 'Brian', 'Arun']
+
+invited_friends
+#=> ["Sharon", "Leo", "Leila", "Arun"]
+```
+
+## Predicate Enumerable Methods
+
+### The include? Method
+```ruby
+numbers = [5, 6, 7, 8]
+
+numbers.include?(6)
+#=> true
+
+numbers.include?(3)
+#=> false
+```
+
+### The any? Method
+```ruby
+numbers = [21, 42, 303, 499, 550, 811]
+
+numbers.any? { |number| number > 500 }
+#=> true
+
+numbers.any? { |number| number < 20 }
+#=> false
+```
+
+### The all? Method
+```ruby
+fruits = ["apple", "banana", "strawberry", "pineapple"]
+
+fruits.all? { |fruit| fruit.length > 3 }
+#=> true
+
+fruits.all? { |fruit| fruit.length > 6 }
+#=> false
+```
+
+### The none? Method
+```ruby
+fruits = ["apple", "banana", "strawberry", "pineapple"]
+
+fruits.none? { |fruit| fruit.length > 10 }
+#=> true
+
+fruits.none? { |fruit| fruit.length > 6 }
+#=> false
+```

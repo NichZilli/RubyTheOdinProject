@@ -45,34 +45,24 @@ fruits.each_with_index { |fruit, index| puts fruit if index.even? }
 ```ruby
 friends = ['Sharon', 'Leo', 'Leila', 'Brian', 'Arun']
 
-friends.each { |friend| friend.upcase }
-
-#=> ['Sharon', 'Leo', 'Leila', 'Brian', 'Arun']
+friends.map { |friend| friend.upcase }
+#=> `['SHARON', 'LEO', 'LEILA', 'BRIAN', 'ARUN']`
 ```
 
 ## The select Method
 ```ruby
 friends = ['Sharon', 'Leo', 'Leila', 'Brian', 'Arun']
-invited_list = []
 
-friends.each do |friend|
-  if friend != 'Brian'
-    invited_list.push(friend)
-  end
-end
+friends.select { |friend| friend != 'Brian' }
 
-invited_list
  #=> ["Sharon", "Leo", "Leila", "Arun"]
 ```
 
 ## The reduce Method
 ```ruby
 my_numbers = [5, 6, 7, 8]
-sum = 0
 
-my_numbers.each { |number| sum += number }
-
-sum
+my_numbers.reduce { |sum, number| sum + number }
 #=> 26
 ```
 
@@ -80,22 +70,24 @@ sum
 ```ruby
 friends = ['Sharon', 'Leo', 'Leila', 'Brian', 'Arun']
 
-friends.map { |friend| friend.upcase }
+friends.map! { |friend| friend.upcase }
 #=> `['SHARON', 'LEO', 'LEILA', 'BRIAN', 'ARUN']`
 
 friends
-#=> ['Sharon', 'Leo', 'Leila', 'Brian', 'Arun']
+#=> `['SHARON', 'LEO', 'LEILA', 'BRIAN', 'ARUN']`
 ```
 
 ## Return Values of Enumerables
 ```ruby
 friends = ['Sharon', 'Leo', 'Leila', 'Brian', 'Arun']
 
-invited_friends = friends.select { |friend| friend != 'Brian' }
+def invited_friends(friends)
+  friends.select { |friend| friend != 'Brian' }
+end
 
 friends
 #=> ['Sharon', 'Leo', 'Leila', 'Brian', 'Arun']
 
-invited_friends
-#=> ["Sharon", "Leo", "Leila", "Arun"]
+invited_friends(friends)
+ #=> ["Sharon", "Leo", "Leila", "Arun"]
 ```

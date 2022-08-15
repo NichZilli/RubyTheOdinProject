@@ -1,3 +1,4 @@
+# Function for the Caesar Cipher Cryptography
 def caesar_cipher(text, shift)
   result = ""
   
@@ -15,15 +16,17 @@ def caesar_cipher(text, shift)
   result
 end
 
+# Making the Encrypt Method
 puts "Ciphering..."
 
 puts "\nEnter the text"
-text = gets.gsub(/\s+/, "")
+text = gets.gsub(/\s+/, "") # Remove all trailing and whitespace
 puts "Enter the shift"
 shift = gets.to_i
-shift = shift%26
+shift = shift%26 # Ensure that shift is in the range (0..25)
 puts "Cipher: #{caesar_cipher(text, shift)}"
 
+# Making the Decrypt Method
 puts "\nDe-Ciphering..."
 
 puts "\nEnter the text"

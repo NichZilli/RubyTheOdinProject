@@ -17,16 +17,16 @@ end
 
 puts "Ciphering..."
 
-puts "Enter the text"
+puts "\nEnter the text"
 text = gets.gsub(/\s+/, "")
 puts "Enter the shift"
 shift = gets.to_i
 shift = shift%26
 puts "Cipher: #{caesar_cipher(text, shift)}"
 
-puts "De-Ciphering..."
+puts "\nDe-Ciphering..."
 
-puts "Enter the text"
+puts "\nEnter the text"
 text_two = gets.gsub(/\s+/, "")
 puts "Enter the shift"
 shift_two = gets.to_i

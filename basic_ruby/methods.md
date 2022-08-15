@@ -68,6 +68,6 @@ puts 12.between?(10, 15) #=> true
 ```ruby
 whisper = "HELLO EVERYBODY"
 
-puts whisper.downcase #=> "hello everybody"
+puts whisper.downcase! #=> "hello everybody"
 puts whisper #=> "HELLO EVERYBODY"
 ```
